@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv('breast-cancer-wisconsin.data')
 df.replace('?', -99999, inplace=True)
 df.drop('id',inplace=True, axis=1)
-print(df)
+#print(df)
 
 X=np.array(df.drop(['class'],axis=1))
 y=np.array(df['class'])

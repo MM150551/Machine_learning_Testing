@@ -1,0 +1,30 @@
+import numpy as np
+from sklearn.cluster import KMeans
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import style
+style.use('ggplot')
+
+
+X = np.array([[1,2],
+             [1.5,2],
+             [7,10],
+             [1, 0.6],
+             [2,9],
+             [10,10],
+             [4,1],
+             [9,11]])
+
+# plt.scatter(X[:,0],X[:,1])
+# plt.show()
+
+clf = KMeans(n_clusters=5)
+clf.fit(X)
+centeroids = clf.cluster_centers_
+labels = clf.labels_   #which cluster the feature belongs to (in this case 0 or 1 as we have 2 clusters)
+
+colors = ["g.","r.","c.","b.","k."]
+for i in range(len(X)):
+    plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 20)
+plt.scatter(centeroids[:,0],centeroids[:,1], marker='x')
+plt.show()
